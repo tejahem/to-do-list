@@ -1,0 +1,283 @@
+*{
+    padding: 0;
+    margin: 0;
+  }
+  
+  body {
+    background: rgb(65, 230, 230); 
+    background: -webkit-radial-gradient(center, rgb(255, 124, 2) 0%, rgb(15, 7, 26) 100%);
+    background: -moz-radial-gradient(center, rgb(255, 136, 0) 0%, rgb(15, 6, 24) 100%);
+    background: radial-gradient(ellipse at center, rgb(255, 145, 0) 0%, rgb(15, 5, 27) 100%);
+    font-family: 'Poppins', cursive;
+    min-height: 100vh;
+  }
+  
+  button {
+    height: fit-content;
+    cursor: pointer;
+    color: #000000;
+     background-color:  rgb(245, 119, 16);
+   
+  }
+  .app {
+    width: 600px;
+    margin: auto;
+    padding-top: 50px;
+    color: white;
+  }
+  
+  .input-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 0px 0px 10px 0px;
+  }
+  
+  .to-do-input input {
+    width: 250px;
+    font-family: inherit;
+    border: none;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 10px;
+    outline: none;
+    border-radius: 100px;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+  }
+  
+  .to-do-input button {
+    color: #000000;
+    font-family: inherit;
+    border: none;
+    padding: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-radius: 100px;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+    
+  }
+  
+  .to-do-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .to-do-list i {
+    color: #000000;
+    cursor: pointer;
+  }
+  
+  .to-do-list .fa-pen-to-square {
+    color: #000000;
+  }
+  
+  .to-do-list button {
+    padding: 8px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: inherit;
+    border: none;
+    color: black;
+  }
+  
+  .item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: rgba(203, 192, 192, 0.495);
+    border-radius: 10px;
+    padding: 8px;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+  }
+  
+  .input-controller {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .input-controller textarea {
+    width: 100%;
+    outline: none;
+    border: none;
+    resize: none;
+    line-height: 1.4;
+    color: rgba(0, 0, 0, 0.822);
+    border-radius: 10px;
+    background-color: transparent;
+    font-size: 1.2rem;
+    font-family: inherit;
+    transition: all 0.30s ease-in-out;
+  }
+  
+  textarea:focus {
+    box-shadow: 0 0 5px white;
+  }
+  
+  .edit-controller {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .update-controller {
+    display: none;
+  }
+  
+  @media(max-width: 768px) {
+    .app {
+      width: 95%;
+      text-align: center;
+    }
+  
+    .input-header {
+      flex-direction: column;
+      padding-bottom: 20px;
+    }
+  
+    .to-do-input {
+      display: flex;
+    }
+  
+    .to-do-input input {
+      width: 300px;
+    }
+  
+  }
+
+
+
+
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+  --dark: #34495E;
+  --light: #ffffff7b;
+  --success: #0ABF30;
+  --error: #E24D4C;
+  --warning: #E9BD0C;
+  --info: #3498DB;
+}
+
+.notifications {
+  position: fixed;
+  top: 30px;
+  right: 20px;
+}
+.notifications :where(.toast, .column) {
+  display: flex;
+  align-items: center;
+}
+.notifications .toast {
+  width: 400px;
+  position: relative;
+  overflow: hidden;
+  list-style: none;
+  border-radius: 4px;
+  padding: 16px 17px;
+  margin-bottom: 10px;
+  background: var(--light);
+  justify-content: space-between;
+  animation: show_toast 0.3s ease forwards;
+}
+@keyframes show_toast {
+  0% {
+    transform: translateX(100%);
+  }
+  40% {
+    transform: translateX(-5%);
+  }
+  80% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-10px);
+  }
+}
+.notifications .toast.hide {
+  animation: hide_toast 0.3s ease forwards;
+}
+@keyframes hide_toast {
+  0% {
+    transform: translateX(-10px);
+  }
+  40% {
+    transform: translateX(0%);
+  }
+  80% {
+    transform: translateX(-5%);
+  }
+  100% {
+    transform: translateX(calc(100% + 20px));
+  }
+}
+.toast::before {
+  position: absolute;
+  content: "";
+  height: 3px;
+  width: 100%;
+  bottom: 0px;
+  left: 0px;
+  animation: progress 5s linear forwards;
+}
+@keyframes progress {
+  100% {
+    width: 0%;
+  }
+}
+
+.toast .column i {
+  font-size: 1.75rem;
+}
+.toast.success .column i {
+  color: var(--success);
+}
+.toast.error .column i {
+  color: var(--error);
+}
+.toast.warning .column i {
+  color: var(--warning);
+}
+.toast.info .column i {
+  color: var(--info);
+}
+.toast .column span {
+  font-size: 1.07rem;
+  margin-left: 12px;
+}
+.toast i:last-child {
+  color: #aeb0d7;
+  cursor: pointer;
+}
+.toast i:last-child:hover {
+  color: var(--dark);
+}
+.bura .btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin: 0 5px;
+  color: var(--light);
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+@media screen and (max-width: 530px) {
+  .notifications {
+    width: 95%;
+  }
+  .notifications .toast {
+    width: 100%;
+    font-size: 1rem;
+    margin-left: 20px;
+  }
+  .bura .btn {
+    margin: 0 1px;
+    font-size: 1.1rem;
+    padding: 8px 15px;
+  }
+}
